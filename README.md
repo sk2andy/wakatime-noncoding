@@ -10,4 +10,4 @@ an Electron app to track not coding related work
 5. open terminal or shell or whatever and run either the run.bat file or run.sh file - this will build the electron app to the dist folder
 
 ## Disclaimer
-This app is an one hour work. It's far away from beeing pretty.
+This app is an one hour work. It's far away from beeing pretty. I never tried the app on windows. It should work though
