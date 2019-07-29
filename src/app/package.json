@@ -1,0 +1,43 @@
+{
+  "name": "cross-platform-desktop",
+  "version": "1.0.0",
+  "description": "cross-platform-desktop",
+  "author": "rui",
+  "repository": "https://github.com/figueiredorui/cross-platform-desktop.git",
+  "license": "MIT",
+  "main": "main.js",
+  "devDependencies": {
+    "electron": "^1.4.1",
+    "electron-builder": "^14.5.3"
+  },
+  "dependencies": {
+    "angular": "^1.6.1"
+  },
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "electron index.html",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "cross-platform-desktop",
+    "directories": {
+      "buildResources": "../../assets",
+      "output": "../../dist"
+    },
+    "extraResources": {
+      "from": "../api/bin/dist/",
+      "to": "api/bin/dist/",
+      "filter": [
+        "**/*"
+      ]
+    },
+    "mac": {
+      "category": "cross-platform-desktop"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    }
+  }
+}

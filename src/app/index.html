@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Wakatime tracker</title>
+</head>
+<body>
+    <script>
+        var beat = false;
+        
+        function sendBeat(){
+            if(!beat) return;
+            var project = document.getElementById("project").value;
+            var what = document.getElementById("what").value;
+            if(project === undefined || project === '' || what === undefined || what === '') {
+                addMessage("inputs are wrong");
+                return;
+            }
+            addMessage("start fetching")
+            
+            fetch("http://localhost:5000/heartbeat?entity="+what+"&project="+project)
+                .then(r=>r.text())
+                .then(r=>{
+                addMessage(r);
+                setTimeout(sendBeat, 1000);
+            });
+        }
+        
+        function start(){
+            beat = true;
+            addMessage("start");
+            sendBeat()
+        }
+        function stop(){
+            beat = false;
+            addMessage("stop");
+        }
+        function addMessage(message){
+            var div = document.createElement("div");
+            div.innerText=message;
+            document.getElementById("messages").appendChild(div)
+        }
+    </script>
+    <input placeholder="Project" id="project">
+    <input placeholder="What" id="what">
+    
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <a target="_blank" href="https://wakatime.com/oauth/authorize?client_id=<appid>&response_type=code&scope=write_logged_time&redirect_uri=http://localhost:5000/auth">Auth</a>
+    <div id="messages"></div>
+</body>
+</html>
