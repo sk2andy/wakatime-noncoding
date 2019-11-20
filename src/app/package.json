@@ -11,7 +11,7 @@
     "electron-builder": "^14.5.3"
   },
   "dependencies": {
-    "angular": "^1.6.1"
+    "angular": "^1.7.9"
   },
   "scripts": {
     "postinstall": "install-app-deps",
