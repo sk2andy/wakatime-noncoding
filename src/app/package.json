@@ -8,7 +8,7 @@
   "main": "main.js",
   "devDependencies": {
     "electron": "^7.2.4",
-    "electron-builder": "^14.5.3"
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
     "angular": "^1.8.0"
